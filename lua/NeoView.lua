@@ -89,6 +89,16 @@ function NeoView.restore_cursor_position()
   end
 end
 
+-- Notify-NeoView
+function NeoView.notify_NeoView()
+  vim.notify("NeoView Data Cleared")
+
+  -- Clear the message area after 3 seconds (3000 milliseconds)
+  vim.defer_fn(function()
+    api.nvim_echo({ { '' } }, false, {})
+  end, 3000)
+end
+
 -- ClearNeoView
 function NeoView.clear_neoview()
   -- Delete all view files in the views directory
@@ -100,8 +110,7 @@ function NeoView.clear_neoview()
   if fn.filereadable(CURSOR_FILE) == 1 then
     fn.delete(CURSOR_FILE)
   end
-
-  print("NeoView data cleared.")
+  NeoView.notify_NeoView()
 end
 
 return NeoView
