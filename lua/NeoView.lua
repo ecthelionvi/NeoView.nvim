@@ -16,6 +16,7 @@ local fn = vim.fn
 local cmd = vim.cmd
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local user_cmd = vim.api.nvim_create_user_command
 
 local NEOVIEW_DIR = fn.stdpath('cache') .. "/NeoView"
 local VIEWS_DIR = NEOVIEW_DIR .. "/views"
@@ -42,6 +43,8 @@ NeoView.setup = function()
       pcall(function() NeoView.save_cursor_position() end)
     end,
   })
+  -- Clear-NeoView
+  user_cmd("ClearNeoView", "lua require('NeoColumn').clear_neoview()", {})
 end
 
 -- Save-View
@@ -84,6 +87,21 @@ function NeoView.restore_cursor_position()
       fn.setpos('.', cursor_data.cursor)
     end
   end
+end
+
+-- ClearNeoView
+function NeoView.clear_neoview()
+  -- Delete all view files in the views directory
+  for _, view_file in ipairs(fn.glob(VIEWS_DIR .. "/*", 0, 1)) do
+    fn.delete(view_file)
+  end
+
+  -- Delete the cursor file
+  if fn.filereadable(CURSOR_FILE) == 1 then
+    fn.delete(CURSOR_FILE)
+  end
+
+  print("NeoView data cleared.")
 end
 
 return NeoView
