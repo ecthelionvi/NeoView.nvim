@@ -99,7 +99,7 @@ function NeoView.notify_NeoView()
   end, 3000)
 end
 
--- ClearNeoView
+-- Clear-NeoView
 function NeoView.clear_neoview()
   -- Delete all view files in the views directory
   for _, view_file in ipairs(fn.glob(VIEWS_DIR .. "/*", 0, 1)) do
