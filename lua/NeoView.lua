@@ -44,7 +44,7 @@ NeoView.setup = function()
     end,
   })
   -- Clear-NeoView
-  user_cmd("ClearNeoView", "lua require('NeoColumn').clear_neoview()", {})
+  user_cmd("ClearNeoView", "lua require('NeoView').clear_neoview()", {})
 end
 
 -- Save-View
