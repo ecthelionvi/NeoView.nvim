@@ -99,7 +99,7 @@ end
 
 -- Notify-NeoView
 function NeoView.notify_NeoView()
-  local message = { { "NeoView Data Cleared", "WarningMsg" } }
+  local message = { { "NeoView Data Cleared", "InfoMsg" } }
   vim.api.nvim_echo(message, false, {})
 
   -- Clear the message area after 3 seconds (3000 milliseconds)
