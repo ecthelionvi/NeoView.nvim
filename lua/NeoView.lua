@@ -36,7 +36,7 @@ NeoView.setup = function()
     end,
   })
 
-  autocmd({ "BufDelete", "BufWinLeave" }, {
+  autocmd({ "BufUnload", "BufWinLeave" }, {
     group = "NeoView",
     callback = function()
       pcall(function() NeoView.save_view() end)
