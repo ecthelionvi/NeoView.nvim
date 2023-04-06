@@ -99,8 +99,7 @@ end
 
 -- Notify-NeoView
 function NeoView.notify_NeoView()
-  local message = "NeoView Data Cleared"
-  vim.cmd("echo '" .. message .. "'")
+  vim.notify("NeoView Data Cleared")
 
   -- Clear the message area after 3 seconds (3000 milliseconds)
   vim.schedule(function()
