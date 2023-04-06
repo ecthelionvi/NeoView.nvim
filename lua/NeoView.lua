@@ -29,14 +29,14 @@ fn.mkdir(VIEWS_DIR, "p")
 NeoView.setup = function()
   cmd('silent! set viewdir=' .. VIEWS_DIR)
 
-  autocmd({ "BufWinEnter" }, {
+  autocmd("BufWinEnter", {
     group = augroup("NeoView", { clear = true }),
     callback = function()
       pcall(function() NeoView.restore_view() end)
     end,
   })
 
-  autocmd({ "BufDelete", "BufWinLeave" }, {
+  autocmd("BufWinLeave", {
     group = "NeoView",
     callback = function()
       pcall(function() NeoView.save_view() end)
