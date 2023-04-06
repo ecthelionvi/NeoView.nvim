@@ -66,7 +66,7 @@ end
 function NeoView.validate_buffer()
   local buftype = vim.bo.buftype
   local disabled = { "terminal", "nofile" }
-  return vim.tbl_contains(disabled, buftype) and true or false
+  return vim.tbl_contains(disabled, buftype) and false or true
 end
 
 -- Save-Cursor-Position
