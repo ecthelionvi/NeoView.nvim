@@ -67,6 +67,8 @@ function NeoView.save_cursor_position()
   local file_path_key = fn.expand('%:p')
   local cursor_position = fn.getpos('.')
 
+  if not NeoView.valid_buffer() then return end
+
   local cursor_data_all = {}
   if fn.filereadable(CURSOR_FILE) == 1 then
     local file_content = table.concat(fn.readfile(CURSOR_FILE))
@@ -80,6 +82,8 @@ end
 
 -- Restore-Cursor-Position
 function NeoView.restore_cursor_position()
+  if not NeoView.valid_buffer() then return end
+
   if fn.filereadable(CURSOR_FILE) == 1 then
     local file_content = table.concat(fn.readfile(CURSOR_FILE))
     local cursor_data_all = fn.json_decode(file_content)
