@@ -102,9 +102,10 @@ function NeoView.notify_NeoView()
   vim.notify("NeoView Data Cleared")
 
   -- Clear the message area after 3 seconds (3000 milliseconds)
-  vim.defer_fn(function()
-    api.nvim_echo({ { '' } }, false, {})
-  end, 3000)
+  vim.wait(3000, function()
+    vim.api.nvim_echo({ { '' } }, false, {})
+    return false
+  end)
 end
 
 -- Validate-Buffer
