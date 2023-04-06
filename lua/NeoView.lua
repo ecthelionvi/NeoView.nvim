@@ -58,7 +58,7 @@ end
 function NeoView.restore_view()
   if NeoView.valid_buffer() then
     cmd('silent! loadview')
-    vim.defer_fn(NeoView.restore_cursor_position, 10)
+    vim.schedule_wrap(NeoView.restore_cursor_position)
   end
 end
 
@@ -87,7 +87,7 @@ function NeoView.restore_cursor_position()
   if fn.filereadable(CURSOR_FILE) == 1 then
     local file_content = table.concat(fn.readfile(CURSOR_FILE))
     local cursor_data_all = fn.json_decode(file_content)
-
+    if not cursor_data_all then return end
     local file_path_key = fn.expand('%:p')
     local cursor_data = cursor_data_all[file_path_key]
 
@@ -117,8 +117,11 @@ end
 -- Clear-NeoView
 function NeoView.clear_neoview()
   -- Delete all view files in the views directory
-  for _, view_file in ipairs(fn.glob(VIEWS_DIR .. "/*", 0, 1)) do
-    fn.delete(view_file)
+  local view_files = fn.split(fn.globpath(VIEWS_DIR, "*"), '\n')
+  for _, view_file in ipairs(view_files) do
+    if fn.isdirectory(view_file) == 0 then
+      fn.delete(view_file)
+    end
   end
 
   -- Delete the cursor file
