@@ -117,12 +117,7 @@ end
 -- Clear-NeoView
 function NeoView.clear_neoview()
   -- Delete all view files in the views directory
-  local view_files = fn.split(fn.globpath(VIEWS_DIR, "*"), '\n')
-  for _, view_file in ipairs(view_files) do
-    if fn.isdirectory(view_file) == 0 then
-      fn.delete(view_file)
-    end
-  end
+  vim.cmd('silent! exec "delete ' .. VIEWS_DIR .. '/*"')
 
   -- Delete the cursor file
   if fn.filereadable(CURSOR_FILE) == 1 then
