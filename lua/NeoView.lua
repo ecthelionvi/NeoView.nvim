@@ -58,7 +58,7 @@ end
 function NeoView.restore_view()
   if NeoView.valid_buffer() then
     cmd('silent! loadview')
-    vim.schedule(NeoView.restore_cursor_position)
+    NeoView.restore_cursor_position()
   end
 end
 
