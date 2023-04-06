@@ -27,7 +27,7 @@ fn.mkdir(NEOVIEW_DIR, "p")
 fn.mkdir(VIEWS_DIR, "p")
 
 NeoView.setup = function()
-  cmd('set viewdir=' .. VIEWS_DIR)
+  cmd('silent! set viewdir=' .. VIEWS_DIR)
 
   autocmd({ "BufWinEnter" }, {
     group = augroup("NeoView", { clear = true }),
