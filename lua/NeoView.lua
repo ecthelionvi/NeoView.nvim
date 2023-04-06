@@ -49,13 +49,23 @@ end
 
 -- Save-View
 function NeoView.save_view()
-  cmd('silent! mkview!')
+  if NeoView.check_buffer() then
+    cmd('silent! mkview!')
+  end
 end
 
 -- Restore-View
 function NeoView.restore_view()
-  cmd('silent! loadview')
-  vim.defer_fn(NeoView.restore_cursor_position, 10)
+  if NeoView.check_buffer() then
+    cmd('silent! loadview')
+    vim.defer_fn(NeoView.restore_cursor_position, 10)
+  end
+end
+
+function NeoView.validate_buffer()
+  local buftype = vim.bo.buftype
+  local disabled = { "terminal", "nofile" }
+  return vim.tbl_contains(disabled, buftype) and false or true
 end
 
 -- Save-Cursor-Position
