@@ -31,10 +31,6 @@ NeoView is a Neovim plugin that allows users to save and restore their views and
 
 NeoView enables users to seamlessly resume their work by restoring their previous view and cursor position upon reopening a file.
 
-## 🔔 Default Behavior
-
-NeoView is enabled by default.
-
 ## 🛠️ Usage
 
 To clear the view list in NeoView, you can use the `ClearNeoView` command:
