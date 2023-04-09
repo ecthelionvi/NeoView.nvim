@@ -29,7 +29,7 @@ NeoView is a Neovim plugin that allows users to save and restore their views and
 
 ## 💾 Persistence
 
-NeoView enables users to seamlessly resume their work by restoring their previous view and cursor position upon reopening a file.
+NeoView maintains the views and cursor position for each file, across sessions.
 
 ## 🛠️ Usage
 
