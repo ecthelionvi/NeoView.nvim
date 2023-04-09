@@ -62,20 +62,3 @@ use "ecthelionvi/NeoView.nvim"
 ```Lua
 require("NeoView").setup()
 ```
-
-## 🔧 Configuration
-
-You can pass your config table into the `setup()` function or `opts` if you use lazy.nvim.
-
-The available options:
-
-- `enabled`(boolean) : start NeoView when the plugin is loaded   
-  - `true` (default)
-
-### Default Config
-
-```Lua
-local config = {
-  enabled = true,
-}
-```

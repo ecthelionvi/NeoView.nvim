@@ -26,19 +26,7 @@ local CURSOR_FILE = NEOVIEW_DIR .. "/cursor_data.json"
 fn.mkdir(NEOVIEW_DIR, "p")
 fn.mkdir(VIEWS_DIR, "p")
 
-local config = {
-  enabled = true,
-}
-
-NeoView.setup = function(user_settings)
-  user_settings = user_settings or {}
-  -- Merge user settings with default settings
-  for k, v in pairs(user_settings) do
-    config[k] = v
-  end
-
-  if not config.enabled then return end
-
+NeoView.setup = function()
   cmd('silent! set viewdir=' .. VIEWS_DIR)
 
   autocmd("BufWinEnter", {
