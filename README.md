@@ -17,6 +17,8 @@
   </a>
 </p>
 
+![demo](https://raw.githubusercontent.com/ecthelionvi/Images/main/NeoView.png)
+
 ## 📢 Introduction
 
 NeoView is a Neovim plugin that allows users to save and restore their views and cursor positions across sessions.
