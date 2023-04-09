@@ -35,7 +35,7 @@ NeoView maintains the views and cursor position for each file, across sessions.
 
 ## 🛠️ Usage
 
-To clear the view list in NeoView, you can use the `ClearNeoView` command:
+To clear the list of views in NeoView, you can use the `ClearNeoView` command:
 
 ```vim
 :ClearNeoView
