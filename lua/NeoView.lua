@@ -65,7 +65,7 @@ function NeoView.restore_view()
   end
 end
 
-function NeoView.notify_NeoView()
+function NeoView.notify_neoview()
   local timer = vim.loop.new_timer()
   vim.notify("NeoView Data Cleared")
 
@@ -85,7 +85,7 @@ function NeoView.clear_neoview()
   if fn.filereadable(CURSOR_FILE) == 1 then
     fn.delete(CURSOR_FILE)
   end
-  NeoView.notify_NeoView()
+  NeoView.notify_neoview()
 end
 
 function NeoView.restore_cursor_position()
