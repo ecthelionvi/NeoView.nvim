@@ -18,7 +18,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local user_cmd = vim.api.nvim_create_user_command
 
-local NEOVIEW_DIR = fn.stdpath('cache') .. "/NeoView"
+local NEOVIEW_DIR = fn.stdpath("cache") .. "/NeoView"
 local VIEWS_DIR = NEOVIEW_DIR .. "/views"
 local CURSOR_FILE = NEOVIEW_DIR .. "/cursor_data.json"
 
@@ -32,7 +32,7 @@ NeoView.setup = function()
 
   vim.g.neoview_setup = true
 
-  cmd('silent! set viewdir=' .. VIEWS_DIR)
+  cmd("silent! set viewdir=" .. VIEWS_DIR)
 
   autocmd("BufWinEnter", {
     group = augroup("NeoView", { clear = true }),
@@ -54,13 +54,13 @@ end
 
 function NeoView.save_view()
   if NeoView.valid_buffer() then
-    cmd('silent! mkview!')
+    cmd("silent! mkview!")
   end
 end
 
 function NeoView.restore_view()
   if NeoView.valid_buffer() then
-    cmd('silent! loadview')
+    cmd("silent! loadview")
     vim.schedule(NeoView.restore_cursor_position)
   end
 end
@@ -95,18 +95,18 @@ function NeoView.restore_cursor_position()
     local file_content = table.concat(fn.readfile(CURSOR_FILE))
     local cursor_data_all = fn.json_decode(file_content)
     if not cursor_data_all then return end
-    local file_path_key = fn.expand('%:p')
+    local file_path_key = fn.expand("%:p")
     local cursor_data = cursor_data_all[file_path_key]
 
     if cursor_data then
-      fn.setpos('.', cursor_data.cursor)
+      fn.setpos(".", cursor_data.cursor)
     end
   end
 end
 
 function NeoView.save_cursor_position()
-  local file_path_key = fn.expand('%:p')
-  local cursor_position = fn.getpos('.')
+  local file_path_key = fn.expand("%:p")
+  local cursor_position = fn.getpos(".")
 
   if not NeoView.valid_buffer() then return end
 
